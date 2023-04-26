@@ -5,10 +5,13 @@
 }
 
 ::-webkit-scrollbar {
-  height: 1rem !important;
-  width: 1.5rem !important;
+  width : 1rem !important;
 }
 
 ::-webkit-scrollbar-thumb {
-  border-radius: 0 !important;
+  border-radius: 6px !important;
+}
+
+.right-6 {
+  right: 2rem !important;
 }
