@@ -1,3 +1,4 @@
+/* Existing styles */
 @media (min-width: 1280px) {
   .xl\:max-w-3xl {
     max-width: 70rem !important;
@@ -5,7 +6,7 @@
 }
 
 ::-webkit-scrollbar {
-  width : 1rem !important;
+  width: 1rem !important;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -14,4 +15,32 @@
 
 .right-6 {
   right: 2rem !important;
+}
+
+/* Toggle button styles */
+.toggle-tab-button {
+  position: fixed;
+  bottom: 5px;
+  left: 260px;
+  width: 20px;
+  height: 47px;
+  background-color: #202123;
+  border: none;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  z-index: 1000;
+  transition: left 0.1s;
+  cursor: pointer;
+}
+
+.toggle-tab-arrow {
+  width: 0;
+  height: 0;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-left: 10px solid white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scaleX(-1);
 }
