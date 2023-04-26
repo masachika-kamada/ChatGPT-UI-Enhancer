@@ -1,0 +1,14 @@
+@media (min-width: 1280px) {
+  .xl\:max-w-3xl {
+    max-width: 70rem !important;
+  }
+}
+
+::-webkit-scrollbar {
+  height: 1rem !important;
+  width: 1.5rem !important;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 0 !important;
+}
