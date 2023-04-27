@@ -17,7 +17,7 @@ export function createSidebarToggleButton() {
   button.appendChild(arrow);
 
   button.addEventListener('click', () => {
-    toggleTabVisibility();
+    toggleSidebarVisibility();
     if (button.style.left === '260px') {
       button.style.left = '0px';
       arrow.style.transform = 'translate(-50%, -50%) scaleX(1)';

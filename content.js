@@ -1,6 +1,6 @@
 import { customizePage, observeDOMChanges } from './domUtils.js';
 import { createSidebarToggleButton } from './toggleSidebar.js';
-import { toggleChatHistoryTitle } from './chatHistoryTitle.js';
+import { toggleChatHistoryTitle, createToggleTitleButton } from './chatHistoryTitle.js';
 
 // Ensure the content script is executed after the page is fully loaded
 if (document.readyState === 'loading') {
@@ -8,11 +8,13 @@ if (document.readyState === 'loading') {
     customizePage();
     createSidebarToggleButton();
     observeDOMChanges();
+    createToggleTitleButton();
   });
 } else {
   customizePage();
   createSidebarToggleButton();
   observeDOMChanges();
+  createToggleTitleButton();
 }
 
 // Add this at the bottom of content.js, after observeDOMChanges()

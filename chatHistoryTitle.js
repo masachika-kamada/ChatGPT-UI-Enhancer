@@ -8,48 +8,78 @@ const fruitsAndAnimals = [
 let originalTitles = [];
 let isTitleHidden = false;
 
-export function toggleChatHistoryTitle(isChecked) {
+export function toggleChatHistoryTitle() {
   const titleBaseXPath = '//*[@id="__next"]/div[2]/div[1]/div/div/nav/div[2]/div/div/a';
   const titleNodesSnapshot = document.evaluate(titleBaseXPath, document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
 
-  if (isChecked) {
-    if (!isTitleHidden) {
-      originalTitles = [];
-      for (let i = 0; i < titleNodesSnapshot.snapshotLength; i++) {
-        const titleNode = titleNodesSnapshot.snapshotItem(i);
-        const childDivNodes = titleNode.querySelectorAll('div');
+  if (!isTitleHidden) {
+    originalTitles = [];
+    for (let i = 0; i < titleNodesSnapshot.snapshotLength; i++) {
+      const titleNode = titleNodesSnapshot.snapshotItem(i);
+      const childDivNodes = titleNode.querySelectorAll('div');
 
-        if (childDivNodes.length > 1) {
-          const node = childDivNodes[0];
-          originalTitles.push(node.textContent);
-          const randomFruitOrAnimal = fruitsAndAnimals[Math.floor(Math.random() * fruitsAndAnimals.length)];
-          node.textContent = randomFruitOrAnimal;
-        } else {
-          const node = childDivNodes[0];
-          originalTitles.push(node.textContent);
-          const randomFruitOrAnimal = fruitsAndAnimals[Math.floor(Math.random() * fruitsAndAnimals.length)];
-          node.textContent = randomFruitOrAnimal;
-        }
+      if (childDivNodes.length > 1) {
+        const node = childDivNodes[0];
+        originalTitles.push(node.textContent);
+        const randomFruitOrAnimal = fruitsAndAnimals[Math.floor(Math.random() * fruitsAndAnimals.length)];
+        node.textContent = randomFruitOrAnimal;
+      } else {
+        const node = childDivNodes[0];
+        originalTitles.push(node.textContent);
+        const randomFruitOrAnimal = fruitsAndAnimals[Math.floor(Math.random() * fruitsAndAnimals.length)];
+        node.textContent = randomFruitOrAnimal;
       }
-      isTitleHidden = true;
     }
+    isTitleHidden = true;
   } else {
-    if (isTitleHidden) {
-      let titleIndex = 0;
-      for (let i = 0; i < titleNodesSnapshot.snapshotLength; i++) {
-        const titleNode = titleNodesSnapshot.snapshotItem(i);
-        const childDivNodes = titleNode.querySelectorAll('div');
+    let titleIndex = 0;
+    for (let i = 0; i < titleNodesSnapshot.snapshotLength; i++) {
+      const titleNode = titleNodesSnapshot.snapshotItem(i);
+      const childDivNodes = titleNode.querySelectorAll('div');
 
-        if (childDivNodes.length > 1) {
-          const node = childDivNodes[0];
-          node.textContent = originalTitles[titleIndex];
-        } else {
-          const node = childDivNodes[0];
-          node.textContent = originalTitles[titleIndex];
-        }
-        titleIndex++;
+      if (childDivNodes.length > 1) {
+        const node = childDivNodes[0];
+        node.textContent = originalTitles[titleIndex];
+      } else {
+        const node = childDivNodes[0];
+        node.textContent = originalTitles[titleIndex];
       }
-      isTitleHidden = false;
+      titleIndex++;
     }
+    isTitleHidden = false;
   }
+  return isTitleHidden;
+}
+
+export function createToggleTitleButton() {
+  const buttonWrapper = document.createElement('div');
+  buttonWrapper.className = 'toggle_button';
+
+  const input = document.createElement('input');
+  input.id = 'toggleTitle';
+  input.className = 'toggle_input';
+  input.type = 'checkbox';
+  input.addEventListener('change', () => {
+    const currentState = toggleChatHistoryTitle();
+    input.checked = currentState;
+  });
+
+  const label = document.createElement('label');
+  label.setAttribute('for', 'toggleTitle');
+  label.className = 'toggle_label';
+
+  buttonWrapper.appendChild(input);
+  buttonWrapper.appendChild(label);
+
+  document.body.appendChild(buttonWrapper);
+
+  injectStyles('styles.css');
+}
+
+function injectStyles(file) {
+  const link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.type = 'text/css';
+  link.href = chrome.runtime.getURL(file);
+  document.head.appendChild(link);
 }
