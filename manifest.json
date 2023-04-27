@@ -8,7 +8,7 @@
                 "https://chat.openai.com/*"
             ],
             "js": [
-                "content.js"
+                "dist/bundle.js"
             ],
             "css": [
                 "styles.css"
