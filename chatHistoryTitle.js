@@ -9,7 +9,7 @@ let originalTitles = [];
 let isTitleHidden = false;
 
 export function toggleChatHistoryTitle() {
-  const titleBaseXPath = '//*[@id="__next"]/div[2]/div[1]/div/div/nav/div[2]/div/div/a';
+  const titleBaseXPath = '//*[@id="__next"]/div[2]/div[1]/div/div/nav/div[2]/div/div/span[1]/div/ol/li/a';
   const titleNodesSnapshot = document.evaluate(titleBaseXPath, document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
 
   if (!isTitleHidden) {
@@ -72,6 +72,10 @@ export function createToggleTitleButton() {
   buttonWrapper.appendChild(label);
 
   document.body.appendChild(buttonWrapper);
+
+  document.addEventListener('sidebarToggled', (e) => {
+    buttonWrapper.style.display = e.detail.isVisible ? '' : 'none';
+  });
 
   injectStyles('styles.css');
 }
