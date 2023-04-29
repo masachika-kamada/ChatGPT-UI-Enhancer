@@ -3,6 +3,14 @@ export function toggleSidebarVisibility() {
   const tabNode = document.evaluate(tabXPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
   if (tabNode) {
     tabNode.style.display = (tabNode.style.display === 'none') ? '' : 'none';
+
+    // カスタムイベントを発火
+    const event = new CustomEvent('sidebarToggled', {
+      detail: {
+        isVisible: tabNode.style.display !== 'none',
+      }
+    });
+    document.dispatchEvent(event);
   }
 }
 
