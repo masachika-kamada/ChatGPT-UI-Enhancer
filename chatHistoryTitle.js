@@ -50,7 +50,7 @@ function getRandomText() {
 
 export function createToggleTitleButton() {
   const buttonWrapper = document.createElement('div');
-  buttonWrapper.className = 'toggle_button';
+  buttonWrapper.className = 'toggle_button toggle-chat-history-button';
 
   const input = document.createElement('input');
   input.id = 'toggleTitle';

@@ -1,4 +1,4 @@
-export function toggleSidebarVisibility() {
+function toggleSidebarVisibility() {
   const tabXPath = '//*[@id="__next"]/div[2]/div[1]';
   const tabNode = document.evaluate(tabXPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
   if (tabNode) {
@@ -36,4 +36,16 @@ export function createSidebarToggleButton() {
   });
 
   document.body.appendChild(button);
+}
+
+export function checkSidebarAndButtonVisibility() {
+  const button1 = document.querySelector('.toggle-tab-button');
+  const button2 = document.querySelector('.toggle-chat-history-button');  // Assume this is the class for the other button
+  const breakPoint = 768;  // This is the break point
+
+  if (button1 && button2) {
+    const displayValue = (window.innerWidth <= breakPoint) ? 'none' : '';
+    button1.style.display = displayValue;
+    button2.style.display = displayValue;
+  }
 }
