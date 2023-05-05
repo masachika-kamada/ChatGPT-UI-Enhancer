@@ -1,4 +1,6 @@
-# Custom ChatGPT 開発環境構築ガイド
+# 開発環境構築ガイド
+
+途中から開発に参加する場合は、以下の手順に従って開発環境を構築する
 
 ## 前提条件
 
@@ -11,7 +13,7 @@
 
    ```
    git clone <リポジトリのURL>
-   cd custom-chatgpt
+   cd chatgpt-ui-enhancer
    ```
 
 2. 必要な依存関係をインストールする
