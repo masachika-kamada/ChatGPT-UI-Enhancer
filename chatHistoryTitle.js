@@ -9,46 +9,43 @@ let originalTitles = [];
 let isTitleHidden = false;
 
 export function toggleChatHistoryTitle() {
-  const titleBaseXPath = '//*[@id="__next"]/div[2]/div[1]/div/div/nav/div[2]/div/div/span[1]/div/ol/li/a';
-  const titleNodesSnapshot = document.evaluate(titleBaseXPath, document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
+  const selector = '#__next div a div';
+  let selectedElements = Array.from(document.querySelectorAll(selector));
+
+  // Exclude elements with the 'absolute' class
+  selectedElements = excludeElementsByClass(selectedElements, 'absolute');
+
+  // Exclude elements whose parent element has the 'data-state' attribute
+  selectedElements = excludeElementsByParentAttribute(selectedElements, 'data-state');
 
   if (!isTitleHidden) {
     originalTitles = [];
-    for (let i = 0; i < titleNodesSnapshot.snapshotLength; i++) {
-      const titleNode = titleNodesSnapshot.snapshotItem(i);
-      const childDivNodes = titleNode.querySelectorAll('div');
-
-      if (childDivNodes.length > 1) {
-        const node = childDivNodes[0];
-        originalTitles.push(node.textContent);
-        const randomFruitOrAnimal = fruitsAndAnimals[Math.floor(Math.random() * fruitsAndAnimals.length)];
-        node.textContent = randomFruitOrAnimal;
-      } else {
-        const node = childDivNodes[0];
-        originalTitles.push(node.textContent);
-        const randomFruitOrAnimal = fruitsAndAnimals[Math.floor(Math.random() * fruitsAndAnimals.length)];
-        node.textContent = randomFruitOrAnimal;
-      }
+    for (const element of selectedElements) {
+      originalTitles.push(element.textContent);
+      const randomText = getRandomText();
+      element.textContent = randomText;
     }
     isTitleHidden = true;
   } else {
-    let titleIndex = 0;
-    for (let i = 0; i < titleNodesSnapshot.snapshotLength; i++) {
-      const titleNode = titleNodesSnapshot.snapshotItem(i);
-      const childDivNodes = titleNode.querySelectorAll('div');
-
-      if (childDivNodes.length > 1) {
-        const node = childDivNodes[0];
-        node.textContent = originalTitles[titleIndex];
-      } else {
-        const node = childDivNodes[0];
-        node.textContent = originalTitles[titleIndex];
-      }
-      titleIndex++;
+    for (let i = 0; i < selectedElements.length; i++) {
+      selectedElements[i].textContent = originalTitles[i];
     }
     isTitleHidden = false;
   }
   return isTitleHidden;
+}
+
+function excludeElementsByClass(elements, className) {
+  return elements.filter(element => !element.classList.contains(className));
+}
+
+function excludeElementsByParentAttribute(elements, attributeName) {
+  return elements.filter(element => !element.parentElement.hasAttribute(attributeName));
+}
+
+function getRandomText() {
+  const randomIndex = Math.floor(Math.random() * fruitsAndAnimals.length);
+  return fruitsAndAnimals[randomIndex];
 }
 
 export function createToggleTitleButton() {
