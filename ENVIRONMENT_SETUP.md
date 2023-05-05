@@ -1,6 +1,6 @@
-# Custom ChatGPT 環境構築情報
+# 環境構築の記録
 
-このドキュメントでは、Custom ChatGPT プロジェクトのこれまでの環境構築に関する情報を説明します。
+ファイル分割にあたり必要となったモジュールバンドラとトランスパイラの導入について
 
 ## プロジェクト構成
 
@@ -22,19 +22,19 @@
 
 ## 依存関係のインストール
 
-プロジェクトに必要な依存関係をインストールする前に、`npm init` コマンドを実行して `package.json` ファイルを作成しました。
+プロジェクトに必要な依存関係をインストールする前に、`npm init` コマンドを実行して `package.json` ファイルを作成
 
-その後、以下のコマンドを実行して、必要な依存関係をインストールしました。
+その後、以下のコマンドを実行して、必要な依存関係をインストール
 
 ```
 npm install webpack webpack-cli webpack-dev-server babel-loader @babel/core @babel/preset-env --save-dev
 ```
 
-上記のコマンドで、プロジェクトに Babel および Webpack 関連の依存関係がインストールされました。
+上記のコマンドで、プロジェクトに Babel および Webpack 関連の依存関係がインストールされる
 
 ## Webpack の設定
 
-`webpack.config.js` ファイルを作成し、以下の内容で設定しました。
+`webpack.config.js` ファイルを作成し、以下の内容で設定
 
 ```javascript
 const path = require('path');
@@ -64,7 +64,7 @@ module.exports = {
 
 ## ビルドスクリプトの追加
 
-`package.json` ファイルの `scripts` セクションに、以下のビルドスクリプトを追加しました。
+`package.json` ファイルの `scripts` セクションに、以下のビルドスクリプトを追加
 
 ```
 "scripts": {
@@ -72,4 +72,4 @@ module.exports = {
 }
 ```
 
-これにより、`npm run build` コマンドを実行することで、プロジェクトのビルドが行われます。
+これにより、`npm run build` コマンドを実行することで、プロジェクトをビルドできるようになる
