@@ -1,5 +1,5 @@
 import { customizePage, observeDOMChanges } from './domUtils.js';
-import { createSidebarToggleButton } from './toggleSidebar.js';
+import { createSidebarToggleButton, checkSidebarAndButtonVisibility } from './toggleSidebar.js';
 import { toggleChatHistoryTitle, createToggleTitleButton } from './chatHistoryTitle.js';
 
 const currentUrl = window.location.href;
@@ -12,12 +12,16 @@ if (!currentUrl.includes("https://chat.openai.com/auth/login")) {
       createSidebarToggleButton();
       observeDOMChanges();
       createToggleTitleButton();
+      checkSidebarAndButtonVisibility();
+      window.addEventListener('resize', checkSidebarAndButtonVisibility);
     });
   } else {
     customizePage();
     createSidebarToggleButton();
     observeDOMChanges();
     createToggleTitleButton();
+    checkSidebarAndButtonVisibility();
+    window.addEventListener('resize', checkSidebarAndButtonVisibility);
   }
 }
 
