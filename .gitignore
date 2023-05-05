@@ -8,3 +8,7 @@ dist/
 
 # Ignore the package-lock.json file
 package-lock.json
+
+.vscode/
+temp_dir
+extension.zip
