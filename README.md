@@ -1,21 +1,24 @@
 # ChatGPT UI Enhancer
 
-## 概要
+English | [日本語](README_JA.md)
 
-ChatGPT の Web インターフェースをより使いやすくカスタマイズするための Chrome 拡張機能
+## Overview
 
-## chrome ウェブストアページ
+A Chrome extension to customize and improve the usability of the ChatGPT web interface.
 
+## Chrome Web Store Page
 
-## 機能
+<https://chrome.google.com/webstore/detail/chatgpt-ui-enhancer/ghdfedmcaidknkcdadgncjcfpopjgbdl>
 
-* 会話履歴タブの表示／非表示切替
-* 会話履歴のタイトルをランダムな単語に変換（プライバシー保護）
-* ユーザー名を USER に変換（プライバシー保護）
-* 文字の表示領域を拡大
-* スクロールバーが一番下まで触れるように修正、さらに太くして移動しやすく
-* チャット欄下に表示される注意書きの削除
+## Features
 
-## 外観
+* Toggle the display of conversation history tab on and off
+* Convert conversation history titles to random words (for privacy protection)
+* Change usernames to USER (for privacy protection)
+* Expand the text display area
+* Adjust the scrollbar to easily reach the bottom and make it thicker for easier navigation
+* Remove the disclaimer displayed below the chat section
+
+## Appearance
 
 ![image](https://user-images.githubusercontent.com/63488322/236440966-c1b89e3d-767c-493c-865c-597d6cf38bdd.png)
