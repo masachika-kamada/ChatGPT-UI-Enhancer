@@ -30,7 +30,7 @@ def create_zip(source_dir, target_zip, include_items):
 
 
 def main():
-    include_items = ["dist", "icon", "manifest.json", "styles.css"]
+    include_items = ["_locales", "dist", "icon", "manifest.json", "styles.css"]
     create_zip(".", "extension.zip", include_items)
 
 

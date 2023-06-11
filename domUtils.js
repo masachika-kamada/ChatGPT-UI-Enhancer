@@ -10,7 +10,9 @@ export function customizePage() {
   // Remove content using the specified XPath
   const removeContentXPaths = [
     '//*[@id="__next"]/div[2]/div[2]/div/main/div[3]/div/span',
-    '//*[@id="__next"]/div[2]/div[2]/div/main/div[3]/div[2]/span'
+    '//*[@id="__next"]/div[2]/div[2]/div/main/div[3]/div[2]/span',
+    '//*[@id="__next"]/div[2]/div[1]/div/div/div/nav/div[2]/div/div/span[1]/div[1]/div',
+    '//*[@id="__next"]/div[2]/div[1]/div/div/div/nav/div[2]/div/div/span[1]/div[2]/div'
   ];
 
   for (const xpath of removeContentXPaths) {
